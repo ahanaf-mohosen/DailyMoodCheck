@@ -1,0 +1,100 @@
+Build a full-stack mood journal app called "Daily Journal" using:
+
+    Frontend: React (with light/dark theme toggle, responsive sidebar, clean UI)
+
+    Backend: Node.js + Express
+
+    Database: MongoDB (or PostgreSQL/SQLite if needed)
+
+🧩 Key Features to Implement:
+⿡ Signup Page
+
+    Fields: name, email (mandatory), password, confirm password, trusted person’s email and phone number (mandatory)
+
+    Show/hide password
+
+    On signup: Send verification code to user email to verify before allowing login
+
+⿢ Login Page
+
+    Login via email/password or Google login using OAuth
+
+    Show/hide password
+
+⿣ Main Journal Page
+
+    Sidebar with:
+
+        Logo: “Daily Journal”
+
+        Navigation items: Profile, Mood Tracker, Journal (icon + text when open, icon only when collapsed)
+
+    Main canvas:
+
+        Text area to write journal
+
+        On submit: Analyze mood (happy, sad, anxious, suicidal, neutral)
+
+        Suggest & display a matching motivational quote inside a gift box card
+
+        After “Unbox Quote” is clicked:
+
+            Automatically save journal with mood
+
+            Update Mood Tracker
+
+            If mood is suicidal, send email to trusted contact immediately (using Nodemailer or similar)
+
+⿤ Mood Tracker Page
+
+    Weekly mood chart
+
+    Filter options: Yearly, Monthly, Custom Range
+
+    Live update after new journal entry
+
+    Stats: Entries this week, consistency tracker (e.g. “4 of 7 days tracked”)
+
+⿥ Profile Page
+
+    Display: user full name, email, trusted person’s email/phone
+
+    Upload/change profile photo
+
+    Change password and trusted contact
+
+    Show profile icon (top-right) with:
+
+        User name & email
+
+        Logout
+
+        Theme toggle (light/dark)
+
+🗂️ Database Schema
+
+    users: id, name, email, password (hashed), trusted_email, trusted_phone, photo_url
+
+    journal_entries: id, user_id, entry_text, mood, created_at
+
+    quotes: id, text, mood_tag
+
+🛠️ Tech & Tools
+
+    Frontend: React + React Router + Context API
+
+    Backend: Node.js + Express
+
+    Auth: JWT + OAuth (Google Sign-In)
+
+    Email: Nodemailer (for suicidal alert and verification code)
+
+    Mood Detection: simple keyword classifier (optional: OpenAI for sentiment)
+
+    Charting: Chart.js or Recharts
+
+    Theme support: Tailwind CSS with Dark/Light mode
+
+    Mobile friendly: Responsive design
+
+    Store all secrets like DB connection string, OAuth client secret, email credentials in .env
