@@ -11,11 +11,12 @@ export default function History() {
 
   // Fetch all journal entries
   const { data: entries = [], isLoading } = useQuery({
-    queryKey: ["/api/journal/entries/all"],
+    queryKey: ["/api/journal/entries"],
     queryFn: async () => {
       const response = await fetch("/api/journal/entries", {
         headers: { Authorization: `Bearer ${token}` },
       });
+      if (!response.ok) throw new Error("Failed to fetch entries");
       return response.json();
     },
   });

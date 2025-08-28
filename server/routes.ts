@@ -8,6 +8,7 @@ import nodemailer from "nodemailer";
 import passport from "passport";
 import session from "express-session";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+import { analyzeMoodAdvanced, analyzeMoodSimple } from "./services/moodAnalysis";
 
 const JWT_SECRET = process.env.JWT_SECRET || "daily-journal-secret-key";
 const EMAIL_USER = process.env.EMAIL_USER || "noreply@dailyjournal.com";
@@ -49,36 +50,53 @@ const authenticateToken = async (req: any, res: any, next: any) => {
   }
 };
 
-// Mood analysis function
-function analyzeMood(text: string): string {
-  const lowerText = text.toLowerCase();
+// Generate insights from mood patterns
+function generatePatternInsights(moodCounts: Record<string, number>, trend: string, riskDaysCount: number): string[] {
+  const insights: string[] = [];
+  const totalEntries = Object.values(moodCounts).reduce((sum, count) => sum + count, 0);
   
-  // Keywords for different moods
-  const moodKeywords = {
-    suicidal: ['kill myself', 'end it all', 'want to die', 'suicide', 'no point', 'worthless', 'hopeless', 'give up'],
-    sad: ['sad', 'depressed', 'down', 'crying', 'tears', 'grief', 'loss', 'lonely', 'empty', 'disappointed'],
-    anxious: ['anxious', 'worried', 'stress', 'nervous', 'panic', 'fear', 'scared', 'overwhelmed', 'restless'],
-    happy: ['happy', 'joy', 'excited', 'great', 'wonderful', 'amazing', 'love', 'grateful', 'blessed', 'fantastic'],
-  };
-  
-  // Check for suicidal indicators first (highest priority)
-  if (moodKeywords.suicidal.some(keyword => lowerText.includes(keyword))) {
-    return 'suicidal';
+  if (totalEntries === 0) {
+    return ["Start journaling to track your mood patterns!"];
   }
   
-  // Count mood indicators
-  const moodScores = {
-    sad: moodKeywords.sad.filter(keyword => lowerText.includes(keyword)).length,
-    anxious: moodKeywords.anxious.filter(keyword => lowerText.includes(keyword)).length,
-    happy: moodKeywords.happy.filter(keyword => lowerText.includes(keyword)).length,
-  };
+  // Most common mood
+  const dominantMood = Object.entries(moodCounts).reduce((a, b) => a[1] > b[1] ? a : b)[0];
+  const dominantPercentage = Math.round((moodCounts[dominantMood] / totalEntries) * 100);
   
-  // Return mood with highest score, or neutral if all scores are 0
-  const maxMood = Object.keys(moodScores).reduce((a, b) => 
-    moodScores[a as keyof typeof moodScores] > moodScores[b as keyof typeof moodScores] ? a : b
-  );
+  insights.push(`Your most common mood is ${dominantMood} (${dominantPercentage}% of entries)`);
   
-  return moodScores[maxMood as keyof typeof moodScores] > 0 ? maxMood : 'neutral';
+  // Trend insights
+  if (trend === 'improving') {
+    insights.push("✨ Your mood trend is improving over the past week!");
+  } else if (trend === 'declining') {
+    insights.push("⚠️ Your mood seems to be declining lately. Consider reaching out for support.");
+  } else {
+    insights.push("Your mood has been relatively stable recently.");
+  }
+  
+  // Risk insights
+  if (riskDaysCount > 0) {
+    insights.push(`🚨 You've had ${riskDaysCount} concerning entries recently. Please consider professional support.`);
+  }
+  
+  // Positive insights
+  const positiveCount = (moodCounts.happy || 0) + (moodCounts.content || 0);
+  if (positiveCount > totalEntries * 0.3) {
+    insights.push("🌟 You have many positive entries - great job maintaining good mental health!");
+  }
+  
+  // Diversity insights
+  const moodVariety = Object.keys(moodCounts).length;
+  if (moodVariety >= 4) {
+    insights.push("You experience a healthy range of emotions in your journaling.");
+  }
+  
+  return insights;
+}
+
+// Mood analysis function (kept for backward compatibility)
+function analyzeMood(text: string): string {
+  return analyzeMoodSimple(text);
 }
 
 // Send emergency email
@@ -445,6 +463,100 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Advanced mood analysis endpoint
+  app.post("/api/journal/analyze-advanced", authenticateToken, async (req: any, res) => {
+    try {
+      const { entryText } = req.body;
+      
+      if (!entryText || typeof entryText !== 'string') {
+        return res.status(400).json({ message: "Entry text is required" });
+      }
+      
+      // Perform advanced mood analysis
+      const analysisResult = await analyzeMoodAdvanced(entryText);
+      
+      // Get quotes for the primary mood
+      const quotes = await storage.getQuotesByMood(analysisResult.primaryMood);
+      const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+      
+      res.json({
+        ...analysisResult,
+        quote: randomQuote,
+      });
+    } catch (error: any) {
+      console.error("Advanced mood analysis error:", error);
+      res.status(500).json({ message: "Failed to perform advanced mood analysis" });
+    }
+  });
+
+  // Mood pattern analysis endpoint
+  app.get("/api/journal/mood-patterns", authenticateToken, async (req: any, res) => {
+    try {
+      const userId = req.user.id;
+      const { days = 30 } = req.query;
+      
+      const dateFrom = new Date();
+      dateFrom.setDate(dateFrom.getDate() - parseInt(days as string));
+      
+      const entries = await storage.getJournalEntriesInDateRange(userId, dateFrom, new Date());
+      
+      // Analyze mood patterns
+      const moodCounts: Record<string, number> = {};
+      const dailyMoods: Record<string, string[]> = {};
+      const riskDays: Array<{ date: string; riskLevel: string; entry: string }> = [];
+      
+      for (const entry of entries) {
+        const date = entry.createdAt!.toISOString().split('T')[0];
+        
+        // Count primary moods
+        moodCounts[entry.mood] = (moodCounts[entry.mood] || 0) + 1;
+        
+        // Track daily moods
+        if (!dailyMoods[date]) dailyMoods[date] = [];
+        dailyMoods[date].push(entry.mood);
+        
+        // Analyze each entry for risk
+        try {
+          const analysis = await analyzeMoodAdvanced(entry.entryText);
+          if (analysis.riskLevel === 'high' || analysis.riskLevel === 'critical') {
+            riskDays.push({
+              date,
+              riskLevel: analysis.riskLevel,
+              entry: entry.entryText.substring(0, 100) + '...'
+            });
+          }
+        } catch (error) {
+          console.error('Error analyzing entry for patterns:', error);
+        }
+      }
+      
+      // Calculate trends
+      const sortedDates = Object.keys(dailyMoods).sort();
+      const recentMoods = sortedDates.slice(-7).flatMap(date => dailyMoods[date]);
+      const earlierMoods = sortedDates.slice(-14, -7).flatMap(date => dailyMoods[date]);
+      
+      // Simple trend calculation
+      const recentNegative = recentMoods.filter(mood => ['sad', 'anxious', 'severely_depressed', 'suicidal'].includes(mood)).length;
+      const earlierNegative = earlierMoods.filter(mood => ['sad', 'anxious', 'severely_depressed', 'suicidal'].includes(mood)).length;
+      
+      let trend = 'stable';
+      if (recentNegative > earlierNegative + 1) trend = 'declining';
+      else if (recentNegative < earlierNegative - 1) trend = 'improving';
+      
+      res.json({
+        moodDistribution: moodCounts,
+        trend,
+        riskDays: riskDays.slice(-10), // Last 10 risk days
+        totalEntries: entries.length,
+        averageEntriesPerDay: entries.length / parseInt(days as string),
+        insights: generatePatternInsights(moodCounts, trend, riskDays.length)
+      });
+    } catch (error: any) {
+      console.error("Mood pattern analysis error:", error);
+      res.status(500).json({ message: "Failed to analyze mood patterns" });
+    }
+  });
+
   app.post("/api/journal/save", authenticateToken, async (req: any, res) => {
     try {
       const userId = req.user.id;
@@ -454,18 +566,30 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ message: "Entry text and mood are required" });
       }
       
+      // Perform advanced analysis for risk assessment
+      let riskLevel = 'low';
+      try {
+        const analysis = await analyzeMoodAdvanced(entryText);
+        riskLevel = analysis.riskLevel;
+      } catch (error) {
+        console.error('Advanced analysis failed, using basic mood:', error);
+      }
+      
       const entry = await storage.createJournalEntry({
         userId,
         entryText,
         mood,
       });
       
-      // Send emergency email if mood is suicidal
-      if (mood === 'suicidal') {
+      // Send emergency email if mood is suicidal or risk level is critical
+      if (mood === 'suicidal' || riskLevel === 'critical') {
         await sendEmergencyEmail(req.user, entryText);
       }
       
-      res.status(201).json(entry);
+      res.status(201).json({
+        ...entry,
+        riskLevel // Include risk level in response
+      });
     } catch (error: any) {
       console.error("Save entry error:", error);
       res.status(500).json({ message: "Failed to save journal entry" });
@@ -560,6 +684,20 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.error("Error checking quote save status:", error);
       res.status(500).json({ message: "Failed to check quote save status" });
     }
+  });
+
+  // Health check endpoint
+  app.get("/api/health", (req, res) => {
+    res.json({ 
+      status: "healthy", 
+      timestamp: new Date().toISOString(),
+      version: "1.0.0",
+      services: {
+        database: "connected",
+        ai_analysis: "enabled",
+        email: process.env.EMAIL_USER ? "configured" : "not configured"
+      }
+    });
   });
 
   const httpServer = createServer(app);

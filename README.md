@@ -1,29 +1,54 @@
-# Daily Mood Tracker 🌟
+# Daily Mood Tracker 🌟 - Enhanced with AI
 
-A comprehensive mental health journaling application with AI-powered mood analysis, crisis detection, and support systems to help users track their emotional wellbeing.
+A comprehensive mental health journaling application with **advanced AI-powered mood analysis**, crisis detection, pattern recognition, and personalized mental health insights to help users track their emotional wellbeing.
 
 ![Daily Mood Tracker](https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&h=400&fit=crop)
 
-## ✨ Features
+## ✨ NEW: AI-Enhanced Features
 
-### 🎯 Core Functionality
-- **Daily Journaling**: Write and save daily thoughts and reflections
-- **AI Mood Analysis**: Automatic mood detection from journal entries
-- **Crisis Detection**: AI-powered identification of concerning content with immediate alerts
-- **Mood Visualization**: Interactive charts showing mood trends over time
-- **Trusted Person Alerts**: Automatic notifications to designated contacts during crises
+### 🧠 Advanced Mood Analysis
+- **Multi-layered AI Analysis**: Combines sentiment analysis, NLP, and machine learning
+- **8 Mood Categories**: Happy, Content, Neutral, Anxious, Sad, Angry, Severely Depressed, Suicidal
+- **Confidence Scoring**: Shows accuracy percentage of mood detection
+- **Intensity Levels**: Measures emotional intensity (low, medium, high)
+- **Secondary Mood Detection**: Identifies mixed emotions in complex entries
+
+### 🎯 Intelligent Insights
+- **Risk Assessment**: Automatic evaluation of mental health risk levels
+- **Trigger Detection**: Identifies stress triggers (work, relationships, health, finances)
+- **Pattern Recognition**: Analyzes long-term emotional patterns and trends
+- **Personalized Recommendations**: AI-generated coping strategies and suggestions
+- **Crisis Intervention**: Automated detection with immediate support resources
+
+### 📊 Advanced Analytics Dashboard
+- **Interactive Mood Charts**: Visual breakdown of emotional patterns
+- **Trend Analysis**: Week-over-week mood improvement/decline tracking
+- **Risk Timeline**: Monitor concerning entries with risk level indicators
+- **Pattern Insights**: AI-generated observations about emotional health
+- **Mental Health Metrics**: Comprehensive well-being statistics
+
+## ✨ Core Functionality
+
+### 🎯 Enhanced Journal Experience
+- **Real-time Mood Analysis**: Instant AI feedback on journal entries
+- **Smart Recommendations**: Personalized suggestions based on detected mood
+- **Visual Mood Indicators**: Color-coded mood displays with confidence scores
+- **Crisis Support Integration**: Immediate access to mental health resources
+- **Advanced Search**: Find entries by mood, date, or emotional triggers
 
 ### 👤 User Management
 - **Secure Authentication**: Email/password login with session management
 - **Profile Management**: Update personal information and trusted contacts
 - **Profile Images**: Upload and manage profile pictures
+- **Emergency Contacts**: Automated crisis alert system
 - **Data Privacy**: Secure handling of sensitive mental health data
 
-### 📊 Analytics & Insights
-- **Weekly Mood Charts**: Visual representation of mood patterns
-- **Consistency Tracking**: Monitor journaling habits and streaks
-- **Mood Statistics**: Dominant mood analysis and entry counting
-- **Historical Data**: Access to past journal entries and mood trends
+### 📊 Comprehensive Analytics
+- **Mood Pattern Analysis**: 7-day to 1-year trend visualization
+- **Risk Monitoring**: Timeline of concerning entries with intervention suggestions
+- **Trigger Correlation**: Advanced analysis of mood triggers and patterns
+- **Progress Tracking**: Measure emotional health improvement over time
+- **Comparative Analytics**: Week-over-week and month-over-month insights
 
 ## 🛠️ Tech Stack
 

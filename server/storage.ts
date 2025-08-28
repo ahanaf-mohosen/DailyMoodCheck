@@ -406,6 +406,7 @@ async function initializeQuotes() {
     // Check if quotes already exist
     const existingQuotes = await db.select().from(quotes).limit(1);
     if (existingQuotes.length > 0) {
+      console.log("Quotes already initialized");
       return; // Quotes already initialized
     }
 
@@ -426,13 +427,18 @@ async function initializeQuotes() {
       await db.insert(quotes).values(quote);
     }
     
-    console.log("Sample quotes initialized in database");
+    console.log("Sample quotes initialized in database successfully");
   } catch (error) {
     console.error("Error initializing quotes:", error);
+    // Don't throw error to prevent app crash
   }
 }
 
 // Initialize quotes when the module is loaded
-initializeQuotes();
+setTimeout(() => {
+  initializeQuotes().catch(err => {
+    console.error("Failed to initialize quotes:", err);
+  });
+}, 1000); // Delay to ensure database connection is ready
 
 export const storage = new DatabaseStorage();

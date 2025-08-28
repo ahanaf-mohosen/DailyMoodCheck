@@ -11,6 +11,7 @@ import Login from "@/pages/login";
 import AuthCallback from "@/pages/auth-callback";
 import Journal from "@/pages/journal";
 import MoodTracker from "@/pages/mood-tracker";
+import MoodAnalytics from "@/pages/mood-analytics";
 import Profile from "@/pages/profile";
 import SavedQuotes from "@/pages/saved-quotes";
 import History from "@/pages/history";
@@ -89,6 +90,12 @@ function Router() {
       <Route path="/mood-tracker">
         <ProtectedRoute>
           <MoodTracker />
+        </ProtectedRoute>
+      </Route>
+
+      <Route path="/mood-analytics">
+        <ProtectedRoute>
+          <MoodAnalytics />
         </ProtectedRoute>
       </Route>
       

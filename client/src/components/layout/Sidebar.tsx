@@ -14,8 +14,9 @@ export function Sidebar({ isOpen, onClose }: SidebarProps) {
 
   const navItems = [
     { href: "/profile", icon: "fas fa-user-circle", label: "Profile" },
-    { href: "/mood-tracker", icon: "fas fa-chart-line", label: "Mood Tracker" },
     { href: "/journal", icon: "fas fa-edit", label: "Journal" },
+    { href: "/mood-tracker", icon: "fas fa-chart-line", label: "Mood Tracker" },
+    { href: "/mood-analytics", icon: "fas fa-brain", label: "Mood Analytics" },
     { href: "/history", icon: "fas fa-history", label: "History" },
     { href: "/saved-quotes", icon: "fas fa-bookmark", label: "Saved Quotes" },
   ];
