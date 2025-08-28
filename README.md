@@ -1,97 +1,114 @@
-# Daily Mood Tracker 🌟 - Enhanced with AI
+# Daily Mood Check 🌟 - AI-Powered Mental Health Journal
 
-A comprehensive mental health journaling application with **advanced AI-powered mood analysis**, crisis detection, pattern recognition, and personalized mental health insights to help users track their emotional wellbeing.
+A comprehensive mental health journaling application featuring **advanced 3-layer AI mood analysis**, crisis detection, personalized quotes, and detailed analytics to help users track and improve their emotional wellbeing.
 
-![Daily Mood Tracker](https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&h=400&fit=crop)
+![Daily Mood Check](https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=800&h=400&fit=crop)
 
-## ✨ NEW: AI-Enhanced Features
+## 🎯 Key Features Overview
 
-### 🧠 Advanced Mood Analysis
-- **Multi-layered AI Analysis**: Combines sentiment analysis, NLP, and machine learning
-- **8 Mood Categories**: Happy, Content, Neutral, Anxious, Sad, Angry, Severely Depressed, Suicidal
-- **Confidence Scoring**: Shows accuracy percentage of mood detection
-- **Intensity Levels**: Measures emotional intensity (low, medium, high)
-- **Secondary Mood Detection**: Identifies mixed emotions in complex entries
+### 🧠 Advanced 3-Layer Mood Analysis System
+Our sophisticated analysis engine combines three powerful approaches:
 
-### 🎯 Intelligent Insights
-- **Risk Assessment**: Automatic evaluation of mental health risk levels
-- **Trigger Detection**: Identifies stress triggers (work, relationships, health, finances)
-- **Pattern Recognition**: Analyzes long-term emotional patterns and trends
-- **Personalized Recommendations**: AI-generated coping strategies and suggestions
-- **Crisis Intervention**: Automated detection with immediate support resources
+#### **Layer 1: Advanced Keyword Detection**
+- **200+ emotion keywords** across 8 mood categories
+- **Context-aware analysis** with intensity modifiers
+- **Weighted scoring system** (Suicidal: 10, Severely Depressed: 8, Happy: 1)
+- **Confidence scoring** based on keyword density and match strength
 
-### 📊 Advanced Analytics Dashboard
-- **Interactive Mood Charts**: Visual breakdown of emotional patterns
-- **Trend Analysis**: Week-over-week mood improvement/decline tracking
-- **Risk Timeline**: Monitor concerning entries with risk level indicators
-- **Pattern Insights**: AI-generated observations about emotional health
-- **Mental Health Metrics**: Comprehensive well-being statistics
+#### **Layer 2: Mathematical Sentiment Analysis**
+- **Sentiment.js integration** for numerical emotion scoring
+- **Positive/negative word pattern analysis**
+- **Cross-validation** with keyword results
+- **Mathematical confidence metrics**
 
-## ✨ Core Functionality
+#### **Layer 3: OpenAI GPT-3.5 Integration**
+- **AI-powered deep insights** and emotional understanding
+- **Contextual analysis** beyond simple keyword matching
+- **Empathetic response generation**
+- **Nuanced trigger identification**
 
-### 🎯 Enhanced Journal Experience
-- **Real-time Mood Analysis**: Instant AI feedback on journal entries
-- **Smart Recommendations**: Personalized suggestions based on detected mood
-- **Visual Mood Indicators**: Color-coded mood displays with confidence scores
-- **Crisis Support Integration**: Immediate access to mental health resources
-- **Advanced Search**: Find entries by mood, date, or emotional triggers
+### 🚨 Comprehensive Crisis Detection & Safety
+- **Real-time risk assessment**: Critical, High, Medium, Low levels
+- **Immediate intervention protocols** for suicidal ideation
+- **Emergency contact notifications** via email alerts
+- **Crisis resource recommendations** with hotline numbers
+- **Safety-first approach** prioritizing user wellbeing
 
-### 👤 User Management
-- **Secure Authentication**: Email/password login with session management
-- **Profile Management**: Update personal information and trusted contacts
-- **Profile Images**: Upload and manage profile pictures
-- **Emergency Contacts**: Automated crisis alert system
-- **Data Privacy**: Secure handling of sensitive mental health data
+### 📊 Advanced Analytics & Insights
+- **Interactive mood charts** with trend analysis
+- **Risk timeline monitoring** with detailed breakdowns
+- **Trigger correlation analysis** (work, relationships, health, etc.)
+- **Pattern recognition** for long-term emotional health
+- **Progress tracking** with streak counters and statistics
 
-### 📊 Comprehensive Analytics
-- **Mood Pattern Analysis**: 7-day to 1-year trend visualization
-- **Risk Monitoring**: Timeline of concerning entries with intervention suggestions
-- **Trigger Correlation**: Advanced analysis of mood triggers and patterns
-- **Progress Tracking**: Measure emotional health improvement over time
-- **Comparative Analytics**: Week-over-week and month-over-month insights
+### 💝 Personalized Quote System
+- **Mood-matched inspirational quotes** delivered after analysis
+- **Database of categorized quotes** for different emotional states
+- **Save favorite quotes** feature for later viewing
+- **Crisis-specific supportive messages** for difficult times
 
-## 🛠️ Tech Stack
+## ✨ Enhanced Features
 
-### Frontend
-- **React 18** - Modern React with hooks and functional components
-- **TypeScript** - Type-safe development
-- **Tailwind CSS** - Utility-first CSS framework
-- **Wouter** - Lightweight client-side routing
-- **TanStack Query** - Server state management
-- **Recharts** - Interactive data visualization
-- **Shadcn/ui** - Modern component library
-- **Vite** - Fast build tool and development server
+### 🎯 Smart Journal Experience
+- **Real-time mood analysis** as you write
+- **Visual mood indicators** with confidence percentages
+- **Personalized recommendations** based on detected emotions
+- **Trigger identification** with coping strategies
+- **Crisis intervention** with immediate support resources
 
-### Backend
-- **Node.js** - JavaScript runtime
-- **Express.js** - Web application framework
-- **TypeScript** - Type-safe server development
-- **PostgreSQL** - Relational database
-- **Drizzle ORM** - Type-safe database operations
-- **Passport.js** - Authentication middleware
-- **Express Session** - Session management
-- **Nodemailer** - Email service integration
-- **Multer** - File upload handling
+### 👤 Complete User Management
+- **Secure authentication** with JWT tokens and bcrypt
+- **Google OAuth integration** for easy login
+- **Profile management** with trusted contact setup
+- **Profile picture uploads** (now supporting larger files)
+- **Email verification** and password reset functionality
 
-### Additional Tools
-- **bcrypt** - Password hashing
-- **Zod** - Schema validation
-- **ESBuild** - Fast JavaScript bundler
-- **Drizzle Kit** - Database migration tool
+### 📈 Comprehensive Analytics Dashboard
+- **Weekly/Monthly trend analysis** with interactive charts
+- **Mood distribution charts** showing emotional patterns
+- **Risk level monitoring** with timeline visualization
+- **Streak tracking** for consistent journaling habits
+- **Detailed statistics** on emotional health progress
 
-## 🚀 Getting Started
+## 🛠️ Technology Stack
+
+### Frontend Technologies
+- **⚛️ React 18** with TypeScript for type-safe development
+- **🎨 Tailwind CSS** with Shadcn/ui components for modern design
+- **📊 Recharts** for interactive data visualization
+- **🔄 TanStack Query** for efficient server state management
+- **📱 Responsive design** optimized for mobile and desktop
+- **⚡ Vite** for fast development and building
+
+### Backend Infrastructure
+- **🟢 Node.js** with Express.js framework
+- **🐘 PostgreSQL** database with Drizzle ORM
+- **🔐 Passport.js** for authentication strategies
+- **📧 Nodemailer** for crisis email notifications
+- **🤖 OpenAI API** integration for advanced analysis
+- **📁 Multer** for secure file upload handling
+
+### AI & Analysis Tools
+- **🧠 OpenAI GPT-3.5** for deep emotional analysis
+- **📊 Sentiment.js** for mathematical sentiment scoring
+- **🔍 Natural language processing** for keyword detection
+- **⚡ Real-time analysis** with confidence metrics
+
+## 🚀 Quick Start Guide
 
 ### Prerequisites
-- Node.js (v18 or higher)
-- PostgreSQL database
-- Gmail account for email services (or other SMTP provider)
+- **Node.js** v18 or higher
+- **PostgreSQL** database (local or cloud)
+- **OpenAI API key** (optional, for enhanced analysis)
+- **Google OAuth credentials** (optional, for social login)
+- **Email account** with app password (for crisis alerts)
 
-### Installation
+### Installation Steps
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/daily-mood-tracker.git
-   cd daily-mood-tracker
+   git clone https://github.com/ahanaf-mohosen/DailyMoodCheck.git
+   cd DailyMoodCheck
    ```
 
 2. **Install dependencies**
@@ -99,18 +116,35 @@ A comprehensive mental health journaling application with **advanced AI-powered 
    npm install
    ```
 
-3. **Set up environment variables**
-   Create a `.env` file in the root directory:
+3. **Configure environment variables**
+   ```bash
+   cp .env.example .env
+   ```
+   Edit `.env` with your actual credentials:
    ```env
-   # Database configuration
-   DATABASE_URL=postgresql://username:password@localhost:5432/dailymoodmate_dev
+   # JWT Secret for authentication
+   JWT_SECRET=your_secure_jwt_secret_here
    
-   # Email configuration
+   # Database Configuration
+   DATABASE_URL=postgresql://username:password@localhost:5432/dailymoodcheck
+   
+   # Email Configuration for crisis alerts
+   EMAIL_USER=your_email@gmail.com
+   EMAIL_PASS=your_app_password
    SMTP_HOST=smtp.gmail.com
    SMTP_PORT=587
-   SMTP_USER=your-email@gmail.com
-   SMTP_PASS=your-app-password
-   SMTP_FROM=Daily Journal <your-email@gmail.com>
+   
+   # Google OAuth (Optional)
+   GOOGLE_CLIENT_ID=your_google_client_id
+   GOOGLE_CLIENT_SECRET=your_google_client_secret
+   
+   # OpenAI API (Optional - for enhanced analysis)
+   OPENAI_API_KEY=your_openai_api_key
+   
+   # Application Settings
+   NODE_ENV=development
+   PORT=5000
+   FRONTEND_URL=http://localhost:5000
    ```
 
 4. **Set up the database**
@@ -123,132 +157,194 @@ A comprehensive mental health journaling application with **advanced AI-powered 
    npm run dev
    ```
 
-6. **Open your browser**
-   Navigate to `http://localhost:5000`
+6. **Access the application**
+   Open `http://localhost:5000` in your browser
 
-## 📁 Project Structure
+## 📁 Project Architecture
 
 ```
-daily-mood-tracker/
-├── client/                 # Frontend React application
-│   ├── src/
-│   │   ├── components/     # Reusable UI components
-│   │   ├── hooks/          # Custom React hooks
-│   │   ├── lib/            # Utility functions
-│   │   ├── pages/          # Page components
-│   │   └── main.tsx        # Application entry point
-│   └── index.html
-├── server/                 # Backend Express application
-│   ├── services/           # Business logic services
-│   └── index.ts            # Server entry point
-├── shared/                 # Shared types and schemas
-│   └── schema.ts           # Database schema definitions
-├── migrations/             # Database migration files
-└── package.json
+DailyMoodCheck/
+├── 📁 client/                          # React frontend application
+│   ├── 📁 src/
+│   │   ├── 📁 components/              # Reusable UI components
+│   │   │   ├── 📁 layout/              # Layout components (Sidebar, TopBar)
+│   │   │   ├── 📁 ui/                  # Shadcn/ui component library
+│   │   │   └── QuoteGiftBox.tsx        # Post-analysis quote display
+│   │   ├── 📁 contexts/                # React context providers
+│   │   ├── 📁 hooks/                   # Custom React hooks
+│   │   ├── 📁 lib/                     # Utility functions & configurations
+│   │   ├── 📁 pages/                   # Page components
+│   │   │   ├── journal.tsx             # Main journaling interface
+│   │   │   ├── mood-analytics.tsx      # Analytics dashboard
+│   │   │   ├── history.tsx             # Journal entry history
+│   │   │   └── profile.tsx             # User profile management
+│   │   └── App.tsx                     # Main application component
+│   └── index.html                      # HTML entry point
+├── 📁 server/                          # Express.js backend
+│   ├── 📁 services/                    # Business logic services
+│   │   └── moodAnalysis.ts             # 3-layer mood analysis engine
+│   ├── db.ts                           # Database connection setup
+│   ├── index.ts                        # Server entry point & configuration
+│   ├── routes.ts                       # API route definitions
+│   └── storage.ts                      # Database operations & queries
+├── 📁 shared/                          # Shared TypeScript definitions
+│   └── schema.ts                       # Database schema & types
+├── 📁 migrations/                      # Database migration files
+├── 📄 MOOD_ANALYSIS_FEATURES.md        # Detailed analysis documentation
+├── 📄 .env.example                     # Environment variables template
+└── 📄 package.json                     # Project dependencies & scripts
 ```
 
-## 🎨 Key Components
+## 🔬 Mood Analysis Documentation
 
-### Frontend Components
-- **Sidebar**: Navigation menu with responsive design
-- **JournalEntry**: Rich text editor for daily entries
-- **MoodChart**: Interactive mood visualization
-- **GiftBox**: Motivational quotes after journal submission
-- **ProfileDropdown**: User account management
+### 🎯 Supported Mood Categories
+1. **😊 Happy** - Joy, excitement, gratitude, love
+2. **😌 Content** - Satisfaction, peace, comfort, stability  
+3. **😐 Neutral** - Ordinary, routine, balanced experiences
+4. **😰 Anxious** - Worry, stress, nervousness, panic
+5. **😢 Sad** - Depression, loneliness, grief, disappointment
+6. **😠 Angry** - Frustration, rage, irritation, resentment
+7. **😭 Severely Depressed** - Deep sadness, hopelessness, despair
+8. **🚨 Suicidal** - Crisis-level indicators requiring immediate intervention
 
-### Backend Services
-- **moodAnalyzer**: AI-powered mood detection from text
-- **emailService**: Crisis alert notification system
-- **Authentication**: Secure user login and session management
+### 🔍 Analysis Process
+1. **Text preprocessing** and normalization
+2. **Keyword pattern matching** with context awareness
+3. **Sentiment scoring** using mathematical algorithms
+4. **OpenAI analysis** for deep emotional insights (if configured)
+5. **Risk assessment** with safety protocol activation
+6. **Recommendation generation** based on detected patterns
+7. **Quote selection** matching emotional state
 
-## 🔒 Security Features
-
-- **Password Hashing**: bcrypt encryption for secure password storage
-- **Session Management**: Secure session handling with PostgreSQL store
-- **Input Validation**: Zod schema validation for all user inputs
-- **CSRF Protection**: Built-in Express security measures
-- **Crisis Detection**: Automated monitoring for concerning content
-
-## 📊 Database Schema
-
-### Users Table
-- User authentication and profile information
-- Trusted person contact details
-- Profile image storage
-
-### Journal Entries Table
-- Daily journal text content
-- AI-analyzed mood classifications
-- Timestamp tracking
-
-### Quotes Table
-- Motivational quotes categorized by mood
-- Inspirational content delivery system
+### 📊 Confidence Metrics
+- **High Confidence (80-95%)**: Strong keyword matches with clear patterns
+- **Medium Confidence (60-79%)**: Moderate indicators with some ambiguity
+- **Low Confidence (30-59%)**: Weak signals requiring human verification
+- **Very Low Confidence (<30%)**: Insufficient data for reliable analysis
 
 ## 🚨 Crisis Detection System
 
-The application includes an advanced crisis detection system that:
-- Analyzes journal entries for concerning keywords
-- Automatically identifies potential suicidal ideation
-- Sends immediate email alerts to trusted contacts
-- Provides crisis resources and hotline information
-- Maintains user privacy while ensuring safety
+### Risk Assessment Levels
+- **🟢 Low Risk**: Normal emotional fluctuations
+- **🟡 Medium Risk**: Elevated stress or sadness requiring attention
+- **🟠 High Risk**: Concerning patterns suggesting professional help
+- **🔴 Critical Risk**: Immediate intervention required with emergency protocols
 
-## 📈 Mood Analysis
+### Crisis Response Protocol
+1. **Automatic detection** of crisis keywords and patterns
+2. **Immediate risk classification** and safety assessment
+3. **Crisis resource provision** with hotline numbers and websites
+4. **Emergency contact notification** via configured email alerts
+5. **Professional help recommendations** with local resource directories
 
-The AI mood analyzer categorizes entries into:
-- **Happy**: Positive emotions and experiences
-- **Sad**: Feelings of sadness or depression
-- **Anxious**: Stress, worry, and anxiety indicators
-- **Neutral**: Balanced or everyday experiences
-- **Crisis**: Concerning content requiring immediate attention
+## 📊 Analytics Features
 
-## 🌐 Deployment
+### Available Charts & Insights
+- **📈 Mood Trend Analysis**: 7-day, 30-day, and yearly patterns
+- **🍰 Mood Distribution**: Pie charts showing emotional balance
+- **⚡ Risk Timeline**: Historical view of concerning entries
+- **🎯 Trigger Analysis**: Correlation between life events and mood
+- **📅 Calendar View**: Daily mood tracking with visual indicators
+- **📊 Progress Metrics**: Improvement tracking and goal monitoring
 
-### Production Build
+### Statistics Dashboard
+- **📝 Entry Count**: Daily, weekly, and monthly journaling frequency
+- **🔥 Streaks**: Consecutive days of journaling habits
+- **📊 Average Mood**: Baseline emotional state tracking
+- **⚠️ Risk Patterns**: Identification of concerning trends
+- **🎯 Most Common Triggers**: Frequently occurring stress factors
+
+## 🔒 Security & Privacy
+
+### Data Protection
+- **🔐 Password encryption** using bcrypt with salt rounds
+- **🛡️ JWT token authentication** with secure session management
+- **📧 Email verification** for account security
+- **🔒 Environment variable protection** for sensitive credentials
+- **🚫 Git ignore for secrets** preventing accidental exposure
+
+### Privacy Features
+- **👤 Personal data encryption** in database storage
+- **📱 Local data processing** when possible
+- **🚫 No data selling** or third-party sharing
+- **🗑️ Account deletion** with complete data removal
+- **📋 Privacy controls** for data visibility and sharing
+
+## 🌐 Deployment Guide
+
+### Development Environment
 ```bash
-npm run build
-npm start
+npm run dev          # Start development server
+npm run db:push      # Apply database schema changes
+npm run build        # Build for production
 ```
 
-### Environment Variables for Production
-Ensure all environment variables are properly configured for your production environment, including:
-- Production database URL
-- SMTP credentials
-- Session secrets
-- File upload configurations
+### Production Deployment
+1. **Set production environment variables**
+2. **Configure PostgreSQL database**
+3. **Set up email service (SMTP)**
+4. **Configure domain and SSL certificates**
+5. **Deploy using your preferred hosting platform**
+
+### Recommended Hosting Platforms
+- **🌐 Vercel** - Easy deployment with automatic SSL
+- **🚀 Railway** - Simple PostgreSQL and app hosting
+- **☁️ Heroku** - Traditional platform-as-a-service
+- **🔧 VPS** - Full control with custom server setup
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+We welcome contributions to improve Daily Mood Check! Here's how to get started:
 
-## 📝 License
+### Development Workflow
+1. **Fork the repository** and create a feature branch
+2. **Set up your development environment** following the installation guide
+3. **Make your changes** with appropriate tests and documentation
+4. **Test thoroughly** including mood analysis and crisis detection
+5. **Submit a pull request** with detailed description of changes
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+### Areas for Contribution
+- **🧠 Enhanced AI analysis** algorithms and improvements
+- **🎨 UI/UX improvements** for better user experience
+- **📊 New analytics features** and visualization options
+- **🌍 Internationalization** and multi-language support
+- **♿ Accessibility improvements** for inclusive design
+- **📚 Documentation** enhancements and tutorials
 
-## 🆘 Support & Resources
+## 📞 Support & Resources
 
 ### Mental Health Resources
-- **National Suicide Prevention Lifeline**: 988
-- **Crisis Text Line**: Text HOME to 741741
-- **International Association for Suicide Prevention**: [Crisis Centers](https://www.iasp.info/resources/Crisis_Centres/)
+- **🇺🇸 National Suicide Prevention Lifeline**: 988
+- **💬 Crisis Text Line**: Text HOME to 741741  
+- **🌍 International Crisis Lines**: [Find local resources](https://findahelpline.com)
+- **🧠 Mental Health America**: [mhanational.org](https://mhanational.org)
 
 ### Technical Support
-- Create an issue on GitHub for bug reports
-- Check the documentation for setup help
-- Review the codebase for implementation details
+- **🐛 Bug Reports**: [GitHub Issues](https://github.com/ahanaf-mohosen/DailyMoodCheck/issues)
+- **💡 Feature Requests**: Create an issue with enhancement label
+- **📖 Documentation**: Check README and code comments
+- **💬 Discussions**: Use GitHub Discussions for questions
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
-- Built with modern web technologies for optimal performance
-- Designed with mental health professionals' input
-- Focused on user privacy and data security
-- Inspired by the need for accessible mental health tools
+### Technology Partners
+- **OpenAI** for advanced natural language processing
+- **Shadcn/ui** for beautiful, accessible components
+- **Vercel** for hosting and deployment platform
+- **PostgreSQL** for reliable data storage
+
+### Inspiration & Support
+- **Mental health professionals** who provided domain expertise
+- **Open source community** for tools and libraries
+- **Users and testers** who provided valuable feedback
+- **Contributors** who helped improve the application
 
 ---
 
-**Note**: This application is designed to support mental health tracking but is not a replacement for professional mental health services. If you're experiencing a mental health crisis, please contact emergency services or a mental health professional immediately.
+**⚠️ Important Disclaimer**: Daily Mood Check is designed to support mental health tracking and self-reflection, but it is **not a replacement for professional mental health services**. If you're experiencing a mental health crisis, please contact emergency services or a qualified mental health professional immediately.
+
+**🔒 Privacy Note**: Your journal entries and personal data are encrypted and stored securely. We never share your personal information with third parties, and you maintain full control over your data.
